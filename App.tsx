@@ -1,5 +1,5 @@
 import {SafeAreaView, Text} from 'react-native';
-import SignUp from 'src/views/auth/SignUp';
+import SignUp from 'src/screens/auth/index';
 
 const App = () => {
   return <SignUp />;
