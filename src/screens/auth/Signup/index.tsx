@@ -2,8 +2,10 @@ import React, {FC, useState} from 'react';
 import {View, SafeAreaView, Button} from 'react-native';
 import styles from './styles';
 import AuthInputField from 'src/components/AuthInputField';
-import {Formik} from 'formik';
+import {Formik, useFormikContext} from 'formik';
 import * as yup from 'yup';
+import Form from 'src/components/Form';
+import SubmitBtn from 'src/components/SubmitBtn';
 
 const signupSchema = yup.object({
   name: yup
@@ -32,6 +34,9 @@ const initialValues = {
 };
 
 const SignUp: FC<Props> = props => {
+  const context = useFormikContext();
+  console.log('context', context);
+
   const [userInfo, setUserInfo] = useState({
     name: '',
     email: '',
@@ -46,47 +51,37 @@ const SignUp: FC<Props> = props => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Formik
+      <Form
         onSubmit={values => {
           console.log('values', values);
         }}
         validationSchema={signupSchema}
         initialValues={initialValues}>
-        {({handleSubmit, handleChange, values, errors}) => {
-          return (
-            <View style={styles.formContainer}>
-              <AuthInputField
-                placeholder="Your name"
-                label="Name"
-                containerStyle={styles.marginBottom}
-                onChange={handleChange('name')}
-                value={values.name}
-                errorMsg={errors.name}
-              />
-              <AuthInputField
-                placeholder="email@email.com"
-                label="Email"
-                keyboardType="email-address"
-                containerStyle={styles.marginBottom}
-                onChange={handleChange('email')}
-                value={values.email}
-                errorMsg={errors.email}
-              />
-              <AuthInputField
-                placeholder="********"
-                label="Password"
-                autoCapitalize="none"
-                secureTextEntry
-                onChange={handleChange('password')}
-                value={values.password}
-                errorMsg={errors.password}
-              />
+        <View style={styles.formContainer}>
+          <AuthInputField
+            name="name"
+            placeholder="Your name"
+            label="Name"
+            containerStyle={styles.marginBottom}
+          />
+          <AuthInputField
+            name="email"
+            placeholder="email@email.com"
+            label="Email"
+            keyboardType="email-address"
+            containerStyle={styles.marginBottom}
+          />
+          <AuthInputField
+            name="password"
+            placeholder="********"
+            label="Password"
+            autoCapitalize="none"
+            secureTextEntry
+          />
 
-              <Button title="Sign Up" onPress={handleSubmit} />
-            </View>
-          );
-        }}
-      </Formik>
+          <SubmitBtn title="Sign Up" />
+        </View>
+      </Form>
     </SafeAreaView>
   );
 };
