@@ -34,21 +34,6 @@ const initialValues = {
 };
 
 const SignUp: FC<Props> = props => {
-  const context = useFormikContext();
-  console.log('context', context);
-
-  const [userInfo, setUserInfo] = useState({
-    name: '',
-    email: '',
-    password: '',
-  });
-
-  const [errorInfo, setErrorInfo] = useState({
-    name: '',
-    email: '',
-    password: '',
-  });
-
   return (
     <SafeAreaView style={styles.container}>
       <Form
@@ -77,8 +62,8 @@ const SignUp: FC<Props> = props => {
             label="Password"
             autoCapitalize="none"
             secureTextEntry
+            containerStyle={styles.marginBottom}
           />
-
           <SubmitBtn title="Sign Up" />
         </View>
       </Form>
