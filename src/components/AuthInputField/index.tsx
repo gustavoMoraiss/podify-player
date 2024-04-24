@@ -5,6 +5,7 @@ import AppInput from 'src/ui/AppInput';
 
 interface Props {
   label?: string;
+  errorMsg?: string;
   placeholder?: string;
   keyboardType?: TextInputProps['keyboardType'];
   autoCapitalize?: TextInputProps['autoCapitalize'];
@@ -15,9 +16,10 @@ interface Props {
 
 const AuthInputField: FC<Props> = props => {
   const {
+    label,
+    errorMsg,
     keyboardType,
     placeholder,
-    label,
     autoCapitalize,
     secureTextEntry,
     containerStyle,
@@ -26,7 +28,10 @@ const AuthInputField: FC<Props> = props => {
 
   return (
     <View style={[styles.container, containerStyle]}>
-      <Text style={styles.label}>{label}</Text>
+      <View style={styles.labelContainer}>
+        <Text style={styles.label}>{label}</Text>
+        <Text style={styles.erroMsg}>{errorMsg}</Text>
+      </View>
       <AppInput
         placeholder={placeholder}
         keyboardType={keyboardType}

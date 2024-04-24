@@ -5,6 +5,14 @@ const styles = StyleSheet.create({
   container: {},
   label: {
     color: colors.CONTRAST,
+  },
+  erroMsg: {
+    color: colors.ERROR,
+  },
+  labelContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     padding: 5,
   },
 });
