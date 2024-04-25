@@ -6,6 +6,7 @@ import {Formik, useFormikContext} from 'formik';
 import * as yup from 'yup';
 import Form from 'src/components/Form';
 import SubmitBtn from 'src/components/SubmitBtn';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const signupSchema = yup.object({
   name: yup
@@ -63,6 +64,7 @@ const SignUp: FC<Props> = props => {
             autoCapitalize="none"
             secureTextEntry
             containerStyle={styles.marginBottom}
+            rightIcon={<Icon name="eye-outline" color="white" size={16}></Icon>}
           />
           <SubmitBtn title="Sign Up" />
         </View>

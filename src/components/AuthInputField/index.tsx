@@ -1,6 +1,13 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC, ReactNode, useEffect} from 'react';
 import styles from './styles';
-import {StyleProp, Text, TextInputProps, View, ViewStyle} from 'react-native';
+import {
+  Pressable,
+  StyleProp,
+  Text,
+  TextInputProps,
+  View,
+  ViewStyle,
+} from 'react-native';
 import AppInput from 'src/ui/AppInput';
 import {useFormikContext} from 'formik';
 import Animated, {
@@ -19,6 +26,8 @@ interface Props {
   autoCapitalize?: TextInputProps['autoCapitalize'];
   secureTextEntry?: boolean;
   containerStyle?: StyleProp<ViewStyle>;
+  rightIcon?: ReactNode;
+  onRightIconPress?(): void;
 }
 
 const AuthInputField: FC<Props> = props => {
@@ -30,6 +39,8 @@ const AuthInputField: FC<Props> = props => {
     autoCapitalize,
     secureTextEntry,
     containerStyle,
+    rightIcon,
+    onRightIconPress,
   } = props;
 
   const inputTransformValue = useSharedValue(0);
@@ -68,15 +79,20 @@ const AuthInputField: FC<Props> = props => {
         <Text style={styles.label}>{label}</Text>
         <Text style={styles.erroMsg}>{errorMsg}</Text>
       </View>
-      <AppInput
-        placeholder={placeholder}
-        keyboardType={keyboardType}
-        autoCapitalize={autoCapitalize}
-        secureTextEntry={secureTextEntry}
-        onChangeText={handleChange(name)}
-        value={values[name]}
-        onBlur={handleBlur(name)}
-      />
+      <View>
+        <AppInput
+          placeholder={placeholder}
+          keyboardType={keyboardType}
+          autoCapitalize={autoCapitalize}
+          secureTextEntry={secureTextEntry}
+          onChangeText={handleChange(name)}
+          value={values[name]}
+          onBlur={handleBlur(name)}
+        />
+        {rightIcon ? (
+          <Pressable style={styles.rightIcon}>{rightIcon}</Pressable>
+        ) : null}
+      </View>
     </Animated.View>
   );
 };
