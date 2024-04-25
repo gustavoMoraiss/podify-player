@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import Form from 'src/components/Form';
 import SubmitBtn from 'src/components/SubmitBtn';
 import Icon from 'react-native-vector-icons/Ionicons';
+import PasswordVisibilityIcon from 'src/ui/PasswordVisibilityIcon';
 
 const signupSchema = yup.object({
   name: yup
@@ -35,6 +36,12 @@ const initialValues = {
 };
 
 const SignUp: FC<Props> = props => {
+  const [secureEntry, setSecureEntry] = useState<boolean>(true);
+
+  const togglePasswordView = () => {
+    setSecureEntry(!secureEntry);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Form
@@ -62,9 +69,10 @@ const SignUp: FC<Props> = props => {
             placeholder="********"
             label="Password"
             autoCapitalize="none"
-            secureTextEntry
+            secureTextEntry={secureEntry}
             containerStyle={styles.marginBottom}
-            rightIcon={<Icon name="eye-outline" color="white" size={16}></Icon>}
+            rightIcon={<PasswordVisibilityIcon privateIcon={secureEntry} />}
+            onRightIconPress={togglePasswordView}
           />
           <SubmitBtn title="Sign Up" />
         </View>

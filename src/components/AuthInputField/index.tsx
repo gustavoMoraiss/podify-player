@@ -90,7 +90,9 @@ const AuthInputField: FC<Props> = props => {
           onBlur={handleBlur(name)}
         />
         {rightIcon ? (
-          <Pressable style={styles.rightIcon}>{rightIcon}</Pressable>
+          <Pressable onPress={onRightIconPress} style={styles.rightIcon}>
+            {rightIcon}
+          </Pressable>
         ) : null}
       </View>
     </Animated.View>
