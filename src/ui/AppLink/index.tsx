@@ -1,6 +1,4 @@
 import React, {FC} from 'react';
-import colors from 'src/utils/colors';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
 

@@ -5,7 +5,7 @@ import Signup from 'src/screens/auth/Signup';
 import Verification from 'src/screens/auth/Verification';
 
 const App = () => {
-  return <Verification />;
+  return <SignIn />;
 };
 
 export default App;
