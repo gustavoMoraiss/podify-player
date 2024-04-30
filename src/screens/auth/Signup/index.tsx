@@ -1,5 +1,5 @@
 import React, {FC, useState} from 'react';
-import {View, SafeAreaView, Button} from 'react-native';
+import {View, SafeAreaView, Button, Image, Text} from 'react-native';
 import styles from './styles';
 import AuthInputField from 'src/components/AuthInputField';
 import {Formik, useFormikContext} from 'formik';
@@ -51,6 +51,13 @@ const SignUp: FC<Props> = props => {
       <CircleUi size={100} position="top-right" />
       <CircleUi size={100} position="bottom-left" />
       <CircleUi size={200} position="bottom-right" />
+      <View style={styles.logoContainer}>
+        <Image source={require('../../../assets/logo.png')} />
+        <Text style={styles.title}>Welcome!</Text>
+        <Text style={styles.subtitle}>
+          Lets get started by creating your account.
+        </Text>
+      </View>
       <Form
         onSubmit={values => {
           console.log('values', values);

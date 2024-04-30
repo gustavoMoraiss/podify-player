@@ -32,6 +32,21 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 20,
   },
+  title: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: colors.SECONDARY,
+    paddingVertical: 5,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: colors.CONTRAST,
+  },
+  logoContainer: {
+    width: '100%',
+    paddingHorizontal: 15,
+    marginBottom: 20,
+  },
 });
 
 export default styles;
