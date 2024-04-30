@@ -11,6 +11,7 @@ import PasswordVisibilityIcon from 'src/ui/PasswordVisibilityIcon';
 import AppLink from 'src/ui/AppLink';
 import colors from 'src/utils/colors';
 import CircleUi from 'src/ui/CircleUi';
+import AuthFormContainer from 'src/components/AuthFormContainer';
 
 const signupSchema = yup.object({
   name: yup
@@ -46,24 +47,15 @@ const SignUp: FC<Props> = props => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <CircleUi size={200} position="top-left" />
-      <CircleUi size={100} position="top-right" />
-      <CircleUi size={100} position="bottom-left" />
-      <CircleUi size={200} position="bottom-right" />
-      <View style={styles.logoContainer}>
-        <Image source={require('../../../assets/logo.png')} />
-        <Text style={styles.title}>Welcome!</Text>
-        <Text style={styles.subtitle}>
-          Lets get started by creating your account.
-        </Text>
-      </View>
-      <Form
-        onSubmit={values => {
-          console.log('values', values);
-        }}
-        validationSchema={signupSchema}
-        initialValues={initialValues}>
+    <Form
+      onSubmit={values => {
+        console.log('values', values);
+      }}
+      validationSchema={signupSchema}
+      initialValues={initialValues}>
+      <AuthFormContainer
+        heading="Welcome!"
+        subHeading="Lets get started by creating your account.">
         <View style={styles.formContainer}>
           <AuthInputField
             name="name"
@@ -94,8 +86,8 @@ const SignUp: FC<Props> = props => {
             <AppLink linkValue="Sign In" />
           </View>
         </View>
-      </Form>
-    </SafeAreaView>
+      </AuthFormContainer>
+    </Form>
   );
 };
 
