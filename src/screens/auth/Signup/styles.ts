@@ -26,6 +26,12 @@ const styles = StyleSheet.create({
   marginBottom: {
     marginBottom: 20,
   },
+  linkContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 20,
+  },
 });
 
 export default styles;

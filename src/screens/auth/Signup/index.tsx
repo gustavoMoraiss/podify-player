@@ -8,6 +8,9 @@ import Form from 'src/components/Form';
 import SubmitBtn from 'src/components/SubmitBtn';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PasswordVisibilityIcon from 'src/ui/PasswordVisibilityIcon';
+import AppLink from 'src/ui/AppLink';
+import colors from 'src/utils/colors';
+import CircleUi from 'src/ui/CircleUi';
 
 const signupSchema = yup.object({
   name: yup
@@ -44,6 +47,10 @@ const SignUp: FC<Props> = props => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <CircleUi size={200} position="top-left" />
+      <CircleUi size={100} position="top-right" />
+      <CircleUi size={100} position="bottom-left" />
+      <CircleUi size={200} position="bottom-right" />
       <Form
         onSubmit={values => {
           console.log('values', values);
@@ -75,6 +82,10 @@ const SignUp: FC<Props> = props => {
             onRightIconPress={togglePasswordView}
           />
           <SubmitBtn title="Sign Up" />
+          <View style={styles.linkContainer}>
+            <AppLink linkValue="I Lost my password" />
+            <AppLink linkValue="Sign In" />
+          </View>
         </View>
       </Form>
     </SafeAreaView>
