@@ -1,16 +1,12 @@
 import React, {FC, useState} from 'react';
-import {View, SafeAreaView, Button, Image, Text} from 'react-native';
+import {View} from 'react-native';
 import styles from './styles';
 import AuthInputField from 'src/components/AuthInputField';
-import {Formik, useFormikContext} from 'formik';
 import * as yup from 'yup';
 import Form from 'src/components/Form';
 import SubmitBtn from 'src/components/SubmitBtn';
-import Icon from 'react-native-vector-icons/Ionicons';
 import PasswordVisibilityIcon from 'src/ui/PasswordVisibilityIcon';
 import AppLink from 'src/ui/AppLink';
-import colors from 'src/utils/colors';
-import CircleUi from 'src/ui/CircleUi';
 import AuthFormContainer from 'src/components/AuthFormContainer';
 
 const signupSchema = yup.object({
